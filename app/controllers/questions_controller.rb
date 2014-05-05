@@ -49,6 +49,14 @@ class QuestionsController < ApplicationController
     # Your Ruby goes here.
     # You'll probably have to use both ActiveRecord query methods as well as some plain old Ruby logic.
 
-    # @most_recent_movie_for_first_actor = ???
+    actor = Actor.first.id
+
+    actors_movies = Role.where({:actor_id => actor}).pluck(:movie_id)
+
+    list_movies = Movie.find(actors_movies)
+
+    sort_list = list_movies.sort_by { |y| y["year"] }
+
+    @most_recent_movie_for_first_actor = sort_list.last.title
   end
 end
