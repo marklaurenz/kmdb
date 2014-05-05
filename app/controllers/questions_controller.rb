@@ -21,7 +21,12 @@ class QuestionsController < ApplicationController
 
     # Your Ruby goes here.
 
-    @number_of_movies_directed_by_first_movie_director = Director.find(1).count
+    # first_movie_director = Director.first.id
+    # first_movie_director = Movie.first.director_id
+
+    count_movies_by_director = Movie.where({:director_id => Director.first.id}).count
+
+    @number_of_movies_directed_by_first_movie_director = count_movies_by_director
 
   end
 
