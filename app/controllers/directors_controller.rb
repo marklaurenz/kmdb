@@ -9,5 +9,7 @@ class DirectorsController < ApplicationController
     # Store the director in the @director instance variable so the view can format it
 
     # @director = ???
+    d = Director.find(params[:id])
+    @director = d
   end
 end

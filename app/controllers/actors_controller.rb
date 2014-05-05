@@ -9,5 +9,7 @@ class ActorsController < ApplicationController
     # Store the actor in the @actor instance variable so the view can format it
 
     # @actor = ???
+    a = Actor.find(params[:id])
+    @actor = a
   end
 end
