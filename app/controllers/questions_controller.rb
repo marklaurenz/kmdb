@@ -36,7 +36,11 @@ class QuestionsController < ApplicationController
     # Your Ruby goes here.
     # You'll probably have to use both ActiveRecord query methods as well as some plain old Ruby logic.
 
-    # @most_number_of_movies_by_a_single_director = ???
+    group_directors = Movie.group(:director_id).count
+
+    order_group = group_directors.values.max
+
+    @most_number_of_movies_by_a_single_director = order_group
   end
 
   def question_5
